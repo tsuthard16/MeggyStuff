@@ -5,22 +5,32 @@ void setup()
   MeggyJrSimpleSetup();
 }
 
+byte a;
+
 void loop()
 {
   ClearSlate();
   
   for (int i = 1; i < 7; i++)
+//  for (int p = 1; p < 7; p++
+  
   {
     DrawPx(0,i,Red);          //A red line that climbs up the side
     DisplaySlate();
     delay (50);
     
-    DrawPx(i,1,8);
-    DrawPx(i,2,8);
-    DrawPx(i,3,8);
-    DrawPx(i,4,8);
-    DrawPx(i,5,8);
-    DrawPx(i,6,8);
+    DrawPx(i,1,a);
+    a+3;
+    DrawPx(i,2,a);
+    a+3;
+    DrawPx(i,3,a);
+    a+3;
+    DrawPx(i,4,a);
+    a+3;
+    DrawPx(i,5,a);
+    a+3;
+    DrawPx(i,6,a);
+    a+3;
     DisplaySlate();
     delay(25);
   }
@@ -34,12 +44,18 @@ void loop()
     DisplaySlate();
     delay (50);
     
-    DrawPx(6,x,11);
-    DrawPx(5,x,11);
-    DrawPx(4,x,11);
-    DrawPx(3,x,11);
-    DrawPx(2,x,11);
-    DrawPx(1,x,11);
+    DrawPx(6,x,a);
+    a++;
+    DrawPx(5,x,a);
+    a++;
+    DrawPx(4,x,a);
+    a++;
+    DrawPx(3,x,a);
+    a++;
+    DrawPx(2,x,a);
+    a++;
+    DrawPx(1,x,a);
+    a++;
     DisplaySlate();
     delay(25);
   }
@@ -55,12 +71,18 @@ void loop()
     DisplaySlate();
     delay (50);
     
-    DrawPx(6,y,12);
-    DrawPx(5,y,12);
-    DrawPx(4,y,12);
-    DrawPx(3,y,12);
-    DrawPx(2,y,12);
-    DrawPx(1,y,12);
+    DrawPx(6,y,a);
+    a++;
+    DrawPx(5,y,a);
+    a++;
+    DrawPx(4,y,a);
+    a++;
+    DrawPx(3,y,a);
+    a++;
+    DrawPx(2,y,a);
+    a++;
+    DrawPx(1,y,a);
+    a++;
     DisplaySlate();
     delay(25);
   }
@@ -74,12 +96,18 @@ void loop()
     DisplaySlate();
     delay(50);
     
-    DrawPx(1,z,9);
-    DrawPx(2,z,9);
-    DrawPx(3,z,9);
-    DrawPx(4,z,9);
-    DrawPx(5,z,9);
-    DrawPx(6,z,9);
+    DrawPx(1,z,a);
+    a++;
+    DrawPx(2,z,a);
+    a++;
+    DrawPx(3,z,a);
+    a++;
+    DrawPx(4,z,a);
+    a++;
+    DrawPx(5,z,a);
+    a++;
+    DrawPx(6,z,a);
+    a++;
     DisplaySlate();
     delay(25);
   }

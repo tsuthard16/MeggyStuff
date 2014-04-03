@@ -1,5 +1,7 @@
 #include <MeggyJrSimple.h>
 
+byte a;
+
 void setup()
 {
   MeggyJrSimpleSetup();
@@ -18,12 +20,18 @@ void loop()
     delay (2);
     
     
-    DrawPx(i,1,8);
-    DrawPx(i,2,8);
-    DrawPx(i,3,8);
-    DrawPx(i,4,8);
-    DrawPx(i,5,8);
-    DrawPx(i,6,8);
+    DrawPx(i,1,a);
+    a++;
+    DrawPx(i,2,a);
+    a++;
+    DrawPx(i,3,a);
+    a++;
+    DrawPx(i,4,a);
+    a++;
+    DrawPx(i,5,a);
+    a++;
+    DrawPx(i,6,a);
+    a++;
     Tone_Start(132193,20);
     DisplaySlate();
     delay(1);
