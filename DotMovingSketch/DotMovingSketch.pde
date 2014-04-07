@@ -1,5 +1,5 @@
 /*
-A lot of the credit for this code goes to Devon Lee, as I took a peek
+A lot of the cait for this code goes to Devon Lee, as I took a peek
 at some of his dot-mover code. Thanks for all the help c:
 */
 
@@ -10,20 +10,52 @@ at some of his dot-mover code. Thanks for all the help c:
 byte x;   //xcoord
 byte y;   //ycoord
 byte z;   //delay
+byte a;   //color cycle button
+byte i;   //xcoord for obstacle
+byte o;   //ycoord for obstacle
 
 void setup()
 {
   MeggyJrSimpleSetup();
   x=0;
   y=0;
-  z=30;
+  z=300;
+  a=1;
+  i=5;
+  o=6;
+}
+
+void obstacle()
+{
+  DrawPx(i,o,Yellow);
+  DisplaySlate();
 }
 
 void loop()
 {
-  DrawPx(x,y,Red);
+  DrawPx(x,y,a);
   
   CheckButtonsDown();
+  
+  if (Button_A)
+  {
+    if (a < 14)
+    {
+      ClearSlate();
+      a++;
+      DisplaySlate();
+    }
+  }
+  
+  if (Button_B)
+  {
+    if (a > 1)
+    {
+      ClearSlate();
+      a--;
+      DisplaySlate();
+    }
+  }
   
   if (Button_Up) //code for going up
   {
@@ -31,13 +63,13 @@ void loop()
     {
       ClearSlate();
       y++;
-      DrawPx(x,y,Red);
+      DrawPx(x,y,a);
     }
   }
   else
   {
     ClearSlate();
-    DrawPx(x,y,Red);
+    DrawPx(x,y,a);
   }
   
   
@@ -48,13 +80,13 @@ void loop()
     {
       ClearSlate();
       y--;
-      DrawPx(x,y,Red);
+      DrawPx(x,y,a);
     }
   }
   else
   {
     ClearSlate();
-    DrawPx(x,y,Red);
+    DrawPx(x,y,a);
   }
   
   
@@ -65,13 +97,13 @@ void loop()
     {
       ClearSlate();
       x++;
-      DrawPx(x,y,Red);
+      DrawPx(x,y,a);
     }
   }
   else
   {
     ClearSlate();
-    DrawPx(x,y,Red);
+    DrawPx(x,y,a);
   }
   
   
@@ -82,17 +114,73 @@ void loop()
     {
       ClearSlate();
       x--;
-      DrawPx(x,y,Red);
+      DrawPx(x,y,a);
     }
   }
   else
   {
     ClearSlate();
-    DrawPx(x,y,Red);
+    DrawPx(x,y,a);
   }
     
+  obstacle();
   
-    
+  
+  
+  if (Button_Up) //All the following Code is for bumping into obstacle(); The problem with it is that it only works for those coordinates.
+  {              //Not sure how to make it do the same thing as this, but only when it touches the obstacle. Maybe if I learn to use ReadPx.
+    if (y == 6)
+    {
+      if (x == 5)
+      {
+        ClearSlate();
+        y--;
+        //DrawPx(x,y,a);
+        DisplaySlate();
+      }
+    }
+  }
+  
+  if (Button_Right)
+  {
+    if (y == 6)
+    {
+      if (x == 5)
+      {
+        ClearSlate();
+        x--;
+        DisplaySlate();
+      }
+    }
+  }
+  
+  if (Button_Down)
+  {
+    if (y == 6)
+    {
+      if (x == 5)
+      {
+        ClearSlate();
+        y++;
+        DisplaySlate();
+      }
+    }
+  }
+  
+  if (Button_Left)
+  {
+    if (y == 6)
+    {
+      if (x == 5)
+      {
+        ClearSlate();
+        x++;
+        DisplaySlate();
+      }
+    }
+  }
+  
+  
   DisplaySlate();
   delay(z);
 }
