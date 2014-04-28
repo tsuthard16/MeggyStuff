@@ -25,11 +25,6 @@ boolean ateApple = false;
 
 void setup()
 {
-  
-  /*snake[i].x = 3;
-  snake[i].y = 3;
-  DrawPx(snake[i].x, snake[i].y, Green);  //draws the snake pixel*/
-  
   MeggyJrSimpleSetup();
   direction=1;
   d=115;
@@ -66,7 +61,6 @@ void directions()
 
 void loop()
 {
-  //drawSnake();
   DisplaySlate();
   delay(d);
   ClearSlate();
@@ -101,7 +95,6 @@ void snakeHead()
   {
     case 1:  //moves snake up
     {
-//      DrawPx(snake[i].x, snake[i].y, 0);
       if (snake[0].y+1 <=7)
       {
         snake[i].y++;
@@ -118,7 +111,6 @@ void snakeHead()
     break;
     case 2:  //moves snake down
     {
-      //DrawPx(snake[i].x, snake[i].y, 0);
       if (snake[0].y-1 >= 0)
       {
         snake[0].y--;
@@ -134,7 +126,6 @@ void snakeHead()
     break;
     case 3:  //moves snake right
     {
-      //DrawPx(snake[i].x, snake[i].y, 0);
       if (snake[0].x+1 <=7)
       {
         snake[0].x++;
@@ -150,7 +141,6 @@ void snakeHead()
     break;
     case 4:  //moves snake left
     {
-      //DrawPx(snake[i].x, snake[i].y, 0);
       if (snake[0].x-1 >=0)
       {
         snake[0].x--;

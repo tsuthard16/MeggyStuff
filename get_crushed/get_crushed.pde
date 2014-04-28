@@ -22,38 +22,46 @@ will help in the late game.
 //////////Global Variables//////////
 byte playerx=3;
 byte playery=0;
-byte playerDirection=0;  //1 moves left, 2 moves right
+byte delayplayer=100;
+int playerDirection=0;  //1 moves left, 2 moves right
 
 
 void setup()
 {
   MeggyJrSimpleSetup();
+  Serial.begin(9600);
 }
 
 
 
 
 
-void drawPlayer()
+/*void drawPlayer()
 {
   DrawPx(playerx, playery, Yellow);
 }
-
+*/
 void movePlayer()
 {
   switch(playerDirection)
   {
     case 0:  //playerDirection = 0, so no movement, it just draws the player in the same spot
     {
-      DrawPx(playerx, playery, Yellow)
+      DrawPx(playerx, playery, Yellow);
     }
     break;
     
     case 1:  //for moving the player left
     {
+      //Serial.println("Left");
       if (playerx >= 0)
       {
         playerx--;
+        DrawPx(playerx, playery, Yellow);
+      }
+      else
+      {
+        playerx = 7;
         DrawPx(playerx, playery, Yellow);
       }
     }
@@ -66,46 +74,48 @@ void movePlayer()
         playerx++;
         DrawPx(playerx, playery, Yellow);
       }
+      else
+      {
+        playerx= 0;
+        DrawPx(playerx, playery, Yellow);
+      }
     }
-    break;
   }
 }
 
-    
+void directions()
+{
+  CheckButtonsDown();
+  if (Button_Left)
+  {
+    playerDirection = 1;
+    Serial.println("GoLeft");
+  }
+  else {
+    if (Button_Right)
+      {
+        playerDirection = 2;
+        Serial.println("GoRight");
+      }
+    else {
+      playerDirection = 0;
+      Serial.println("DoNothing");
+    }
+  }
+}
+
+  
   
 
 void loop()
 { 
+  ClearSlate();
   directions();
   movePlayer();    
-  drawPlayer();
+  //drawPlayer();
+  DisplaySlate();
+  delay(20);
 }
   
 
-void directions();
-{
-  CheckButtonsDown();
-  {
-    if (Button_Left)
-    {
-      playerDirection = 1;
-      playerx--;
-    }
-    else
-    {
-      playerDirection = 0;
-    }
-    
-    if (Button_Right)
-    {
-      playerDirection = 2;
-      playerx++;
-    }
-    else
-    {
-      playerDirection = 0;
-    }
-  }
-}
 
-  
